@@ -1,10 +1,10 @@
 # hotelscore
 酒店评分项目
-##开发工具: IDEA
+## 开发工具: IDEA
 
-##开发环境: Tomcat7+JDK1.8+MySQL5.6
+## 开发环境: Tomcat7+JDK1.8+MySQL5.6
 
-##使用技术: html+css+Sevices+MyBatis+BootStrap+Spring+JSTL
+## 使用技术: html+css+Sevices+MyBatis+BootStrap+Spring+JSTL
 
 ## 需求
 
