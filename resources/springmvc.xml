@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:mvc="http://www.springframework.org/schema/mvc" xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="
+        http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/mvc
+        http://www.springframework.org/schema/mvc/spring-mvc.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context.xsd">
+
+    <!--开启注解扫描，只扫描Controller注解-->
+    <context:component-scan base-package="com.qf.controller"></context:component-scan>
+
+
+    <!--配置的视图解析器对象-->
+    <bean id="internalResourceViewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+        <property name="prefix" value="/WEB-INF/admin/"/>
+        <property name="suffix" value=".jsp"/>
+    </bean>
+
+
+<!--    <bean id="htmlviewResolver" class="org.springframework.web.servlet.view.freemarker.FreeMarkerViewResolver">-->
+<!--        <property name="prefix" value="/WEB-INF/pages/"/>-->
+<!--        <property name="suffix" value=".jsp"/>-->
+<!--    </bean>-->
+
+
+    <!--过滤静态资源-->
+<!--    <mvc:resources location="/css/" mapping="/css/**" />-->
+<!--    <mvc:resources location="/images/" mapping="/images/**" />-->
+<!--    <mvc:resources location="/js/" mapping="/js/**" />-->
+
+    <!--过滤静态资源:默认放行所有的静态资源，包含了html-->
+    <mvc:default-servlet-handler/>
+    
+    <!--拦截器LoginInterceptor-->
+    <mvc:interceptors>
+        <mvc:interceptor>
+            <mvc:mapping path="/**"/>
+
+
+            <!-- 与登录相关的请求 -->
+            <mvc:exclude-mapping path="/*.jsp"/>
+            <!-- 放行登录请求 -->
+            <mvc:exclude-mapping path="/**/login.do"/>
+
+            <!--网站路径-->
+            <mvc:exclude-mapping path="/"/>
+            <!--静态资源-->
+            <mvc:exclude-mapping path="/img/**"/>
+            <mvc:exclude-mapping path="/js/**"/>
+            <mvc:exclude-mapping path="/css/**"/>
+            <mvc:exclude-mapping path="/bootstrap3.3.7/**"/>
+
+            <bean class="com.qf.interceptor.LoginInterceptor"></bean>
+        </mvc:interceptor>
+    </mvc:interceptors>
+    
+    <!--开启SpringMVC注解的支持-->
+    <mvc:annotation-driven/>
+
+</beans>
