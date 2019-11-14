@@ -39,7 +39,7 @@
 | birthday |   date   |  8   |    不允许    |        |  出生日期  |
 |  email   | varchar  |  32  |    不允许    |        |   Email    |
 |  phone   | varchar  |  16  |    不允许    |        |    手机    |
-|   pic    | varchar  |  32  |    不允许    |        |  用户头像  |
+|   pic    | varchar  |  255  |    不允许    |        |  用户头像  |
 | regtime  | datetime |  0   |    不允许    |        |  注册时间  |
 |   flag   |   int    |  1   |    不允许    |   0    |    状态    |
 
@@ -99,7 +99,7 @@ CREATE TABLE `admin` (
 | introduction | varchar | 32 | 不允许 |  | 酒店简介 |
 | address | varchar | 255 | 不允许 |  | 酒店地址 |
 | phone | varchar | 16 | 不允许 |  | 酒店电话 |
-| pic | varchar | 32 | 不允许 |  | 酒店简介图片地址 |
+| pic | varchar | 255 | 不允许 |  | 酒店简介图片地址 |
 | score | double | 1 | 不允许 |  | 酒店评分 |
 | price | double | 16 | 不允许 |  | 酒店价格 |
 |     kind     | varchar  | 255  |     允许     |  其他  |     酒店类型     |
@@ -135,7 +135,7 @@ CREATE TABLE `hotel` (
 | 列名 | 数据类型 | 长度 | 是否允许为空 | 默认值 | 说明 |
 | :----: | :--------: | :----: | :------------: | :------: | :----: |
 | usercontentid | int | 16 | 不允许 | 1 | 主键，自增 |
-| content | varchar | 255 | 不允许 |  | 评论内容 |
+| content | text | 0 | 不允许 |  | 评论内容 |
 | time | date | 0 | 不允许 |  | 评价时间 |
 |  hotelid   |   int    |  16  |    不允许    |        |   酒店id   |
 |   userid   |   int    |  16  |    不允许    |        |   用户id   |
@@ -185,7 +185,7 @@ CREATE TABLE `evaluate` (
 | :----: | :--------: | :----: | :------------: | :------: | :----: |
 | hotelpictureid | int | 16 | 不允许 | 1 | 主键，自增 |
 |    hotelid     |   int    |  16  |    不允许    |        |   酒店id   |
-| pic | varchar | 32 | 不允许 |  | 图片地址 |
+| pic | varchar | 255 | 不允许 |  | 图片地址 |
 | flag | int | 1 | 不允许 | 0 | 状态 |
 
 ### sql语句
